@@ -5,9 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyCompanyInThePocket.Core.Repositories.OnlineRepositories
+namespace MyCompanyInThePocket.Core.Services.Interface
 {
-    internal interface IOnlineRepository
+    public interface IUseFullLinkService
     {
+        Task<List<UseFullLink>> GetUseFullLinksAsync();
     }
 }

@@ -43,6 +43,12 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>StringValues.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Images\azure.png" />
+    <EmbeddedResource Include="Resources\Images\delve.png" />
+    <EmbeddedResource Include="Resources\Images\office365.png" />
+    <EmbeddedResource Include="Resources\Images\outlook.png" />
+    <EmbeddedResource Include="Resources\Images\projets.png" />
+    <EmbeddedResource Include="Resources\Images\vsts.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
@@ -54,14 +60,11 @@
     <Compile Include="Models\UseFullLink.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\DatabaseRepositories\DatabaseMeetingRepository.cs" />
     <Compile Include="Repositories\Interfaces\IOnlineMeetingRepository.cs" />
     <Compile Include="Repositories\MockRepositories\MeetingRepository.cs" />
     <Compile Include="Repositories\MockRepositories\UseFullLinkRepository.cs" />
     <Compile Include="Repositories\OnlineRepositories\AuthentificationService.cs" />
-    <Compile Include="Repositories\Interfaces\IOnlineRepository.cs" />
-    <Compile Include="Repositories\OnlineRepositories\MeetingRepository.cs" />
-    <Compile Include="Repositories\OnlineRepositories\OnlineSettings.cs" />
+    <Compile Include="Repositories\OnlineRepositories\OnlineMeetingRepository.cs" />
     <Compile Include="Config.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -81,6 +84,23 @@
     <Compile Include="ViewModels\MainScreenViewModel.cs" />
     <Compile Include="ViewModels\SplashScreenViewModel.cs" />
     <Compile Include="ViewModels\StartupViewModel.cs" />
+    <Compile Include="Settings\ApplicationSettings.cs" />
+    <Compile Include="Settings\OnlineSettings.cs" />
+    <Compile Include="ViewModels\SettingsViewModel.cs" />
+    <Compile Include="ViewModels\Meeting\MeetingsViewModel.cs" />
+    <Compile Include="ViewModels\Meeting\MeetingViewModel.cs" />
+    <Compile Include="Repositories\Interfaces\IOnlineUseFullLinkRepository.cs" />
+    <Compile Include="ViewModels\UsefullLink\UseFullLinkViewModel.cs" />
+    <Compile Include="Helpers\ResourcesHelper.cs" />
+    <Compile Include="ViewModels\UsefullLink\UsefullLinksViewModel.cs" />
+    <Compile Include="Services\Interface\IUseFullLinkService.cs" />
+    <Compile Include="Services\UseFullLinkService.cs" />
+    <Compile Include="Repositories\Database\DbMeetingRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IDbMeetingRepository.cs" />
+    <Compile Include="Repositories\OnlineRepositories\MeetingMapper.cs" />
+    <Compile Include="Extension\DateTimeExtension.cs" />
+    <Compile Include="ViewModels\SuspendableObservableCollection.cs" />
+    <Compile Include="ViewModels\Meeting\GroupedMeetingViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">
@@ -128,14 +148,6 @@
       <HintPath>..\packages\Xam.Plugin.Connectivity.2.3.0\lib\portable-net45+wp80+win8+wpa81\Plugin.Connectivity.Abstractions.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Plugin.Settings, Version=2.5.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xam.Plugins.Settings.2.5.1.0\lib\portable-net45+wp80+win8+wpa81\Plugin.Settings.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Plugin.Settings.Abstractions, Version=2.5.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xam.Plugins.Settings.2.5.1.0\lib\portable-net45+wp80+win8+wpa81\Plugin.Settings.Abstractions.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="SQLite.Net, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SQLite.Net.Core-PCL.3.1.1\lib\portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1\SQLite.Net.dll</HintPath>
       <Private>True</Private>
@@ -144,6 +156,26 @@
       <HintPath>..\packages\SQLite.Net.Async-PCL.3.1.1\lib\portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1\SQLite.Net.Async.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Plugin.Settings.Abstractions">
+      <HintPath>..\packages\Xam.Plugins.Settings.2.5.4\lib\portable-net45+wp80+win8+wpa81\Plugin.Settings.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Settings">
+      <HintPath>..\packages\Xam.Plugins.Settings.2.5.4\lib\portable-net45+wp80+win8+wpa81\Plugin.Settings.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Share.Abstractions">
+      <HintPath>..\packages\Plugin.Share.5.0.0\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Plugin.Share.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Share">
+      <HintPath>..\packages\Plugin.Share.5.0.0\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Plugin.Share.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Settings\" />
+    <Folder Include="ViewModels\Meeting\" />
+    <Folder Include="ViewModels\UsefullLink\" />
+    <Folder Include="Resources\Images\" />
+    <Folder Include="Repositories\Database\" />
+    <Folder Include="Extension\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

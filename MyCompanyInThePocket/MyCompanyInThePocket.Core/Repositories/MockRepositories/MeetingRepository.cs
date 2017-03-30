@@ -45,27 +45,10 @@ namespace MyCompanyInThePocket.Core.Repositories.MockRepositories
                     meeting.StartDate = currentDay.AddHours(hour);
                     meeting.EndDate = meeting.StartDate.AddMinutes(20);
                     meeting.Title = $"RENDEZ VOUS jour :{day}, heure {hour}";
-                    meeting.Type = "Mission";
+					meeting.Type = MeetingType.Mission;
                     meeting.AllDayEvent = false;
                     meetings.Add(meeting);
                 }
-            }
-
-            return meetings;
-        }
-
-        private List<Meeting> MapMeetings(CalendarValue[] sharePointMeetings)
-        {
-            var meetings = new List<Meeting>(sharePointMeetings.Length);
-            foreach (var meeting in sharePointMeetings)
-            {
-                var dbMeeting = new Meeting();
-                dbMeeting.EndDate = meeting.EndDate;
-                dbMeeting.StartDate = meeting.EventDate;
-                dbMeeting.Title = meeting.Title;
-                dbMeeting.Type = meeting.TypeCRA;
-                dbMeeting.AllDayEvent = meeting.fAllDayEvent.GetValueOrDefault();
-                meetings.Add(dbMeeting);
             }
 
             return meetings;

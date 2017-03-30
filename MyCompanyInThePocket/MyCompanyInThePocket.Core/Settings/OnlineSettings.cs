@@ -1,26 +1,23 @@
+using System;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using Plugin.Settings;
 using Plugin.Settings.Abstractions;
-namespace MyCompanyInThePocket.Core.Repositories.OnlineRepositories
+namespace MyCompanyInThePocket.Core
 {
-    /// <summary>
-    /// This is the Settings static class that can be used in your Core solution or in any
-    /// of your client applications. All settings are laid out the same exact way with getters
-    /// and setters. 
-    /// </summary>
     internal static class OnlineSettings
     {
         private static ISettings AppSettings
         {
             get
             {
-                return CrossSettings.Current;
+				return CrossSettings.Current;
             }
         }
 
         private const string AccessTokenKey = "ADAL" + nameof(AccessToken);
         private const string IdentityKey = "ADAL" + nameof(Identity);
         private const string FamilyNameKey = "ADAL" + nameof(FamilyName);
-
 
         public static string AccessToken
         {
@@ -58,8 +55,9 @@ namespace MyCompanyInThePocket.Core.Repositories.OnlineRepositories
             }
         }
 
-        public static void Clear()
+		public static void Clear()
         {
+			Identity = null;
             AccessToken = null;
             FamilyName = null;
         }
